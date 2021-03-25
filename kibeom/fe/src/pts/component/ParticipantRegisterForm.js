@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const ParticipantForm = () => {
   const participantRegister = () => {
     alert('클릭 1')
-    axios.post(`http://localhost8080/participant/register`)
+    axios.post(`http://localhost:8080/participant/register`)
     .then(res => {
       alert(`res : res.data`)
     })

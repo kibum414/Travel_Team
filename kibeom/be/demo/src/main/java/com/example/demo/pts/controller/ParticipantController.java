@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.pts.domain.Participant;
-import com.example.demo.pts.domain.Participant;
 import com.example.demo.pts.service.ParticipantServiceImpl;
 
 import lombok.RequiredArgsConstructor;
