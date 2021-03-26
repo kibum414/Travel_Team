@@ -10,9 +10,11 @@ public interface ParticipantService {
 	
 	public void modify(Participant participant) throws Exception;
 	
+	/*
 	public void delete(Long participantNo) throws Exception;
 	
-	public Participant detail(Long participantNo) throws Exception;
+	public ParticipantDto detail(Long participantNo) throws Exception;
 	
-	public List<Participant> list() throws Exception;
+	public List<ParticipantDto> list() throws Exception;
+	*/
 }

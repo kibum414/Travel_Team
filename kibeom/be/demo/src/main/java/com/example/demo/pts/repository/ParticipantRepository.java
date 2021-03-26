@@ -9,19 +9,26 @@ import com.example.demo.pts.domain.Participant;
 
 interface ParticipantCustomRepository {
 	
-	@Modifying
-	@Query(value = "INSERT INTO participants(name, gender, phone_number, email, birthday, reg_date) "
-			+ "values(:name, :gender, :phone_number, :email, :birthday, :regdate)", nativeQuery = true)
-	Participant save(
-			@Param("name") String name, @Param("gender") String gender, @Param("phone_number") String phoneNumber,
-			@Param("email") String email, @Param("birthday") String birthday, @Param("reg_date") String regdate);
 	
-	@Modifying
-	@Query(value = "UPDATE participants SET title={title}", nativeQuery = true)
 	
 }
 
 public interface ParticipantRepository extends JpaRepository<Participant, Long>, ParticipantCustomRepository {
 	
+	@Modifying
+	@Query(value = "INSERT INTO participants(name, gender, phone_number, email, birthday, reg_date) "
+			+ "values(:name, :gender, :phone_number, :email, :birthday, :reg_date)", nativeQuery = true)
+	public Participant save(
+			@Param("name") String name, @Param("gender") String gender, @Param("phone_number") String phoneNumber,
+			@Param("email") String email, @Param("birthday") String birthday, @Param("reg_date") String regdate);
+	
+	/*
+	@Modifying
+	@Query(value = "UPDATE participants SET name = :title, gender = :gender, phone_number = :phoneNumber, "
+			+ "email = :email, birthday = :birthday, reg_date = :regdate", nativeQuery = true)
+	Participant modify(
+			@Param("name") String name, @Param("gender") String gender, @Param("phone_number") String phoneNumber,
+			@Param("email") String email, @Param("birthday") String birthday, @Param("reg_date") String regdate);
+	*/
 	
 }

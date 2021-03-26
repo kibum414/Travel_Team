@@ -1,12 +1,33 @@
 import axios from 'axios'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const ParticipantForm = () => {
-  const participantRegister = () => {
+
+  const [participant, setParticipant] = useState({
+    participantName: "",
+    gender: "",
+    birthday: "",
+    phone: "",
+    email: "",
+  })
+
+  const { participantName, gender, birthday, phone, email } = participant
+
+  const participantRegister = (e) => {
+    e.preventDefault()
+
     alert('클릭 1')
-    axios.post(`http://localhost:8080/participant/register`)
+
+    axios.post(`http://localhost:8080/participants`, {
+      participantName,
+      gender,
+      birthday,
+      phone,
+      email
+    })
     .then(res => {
-      alert(`res : res.data`)
+      alert(`res : ${res.data}`)
     })
     .catch(err => {
       alert(`err : ${err}`)
@@ -18,8 +39,8 @@ const ParticipantForm = () => {
       <h3>캠페인 참가자 등록</h3>
       
       <div className="content">
-        <label for="name">이름</label>
-        <input type="text" placeholder="이름을 입력하세요." name="name" required/>
+        <label for="participantName">이름</label>
+        <input type="text" placeholder="이름을 입력하세요." name="participantName" required />
         
         <label for="gender">성별</label>
         <select name="gender" required>
@@ -28,9 +49,10 @@ const ParticipantForm = () => {
         </select>
 
         <label for="birthday">생년월일</label>
-        <input type="text" placeholder="년(4자리)" name="year" required />
+        <input type="text" placeholder="생년월일을 입력하세요." name="birthday" required />
+        {/* <input type="text" placeholder="년(4자리)" name="year" required />
         <input type="text" placeholder="월" name="month" required />
-        <input type="text" placeholder="일" name="day" required />
+        <input type="text" placeholder="일" name="day" required /> */}
 
         <label for="phone">휴대전화</label>
         <input type="text" placeholder="전화번호 입력" name="phone" required />
@@ -40,7 +62,7 @@ const ParticipantForm = () => {
       </div>
 
       <div>
-        <Link to="/">취소</Link>
+        <Link to="/Participant">취소</Link>
         <button onClick={participantRegister}>등록</button>
       </div>
     </form>
