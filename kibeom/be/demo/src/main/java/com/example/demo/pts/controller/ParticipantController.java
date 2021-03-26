@@ -24,7 +24,7 @@ public class ParticipantController {
 	private final ParticipantServiceImpl service;
 	
 	@PostMapping("")
-	public ResponseEntity<?> register(
+	public ResponseEntity<Participant> register(
 			@Validated @RequestBody Participant participant) throws Exception {
 		System.out.println("Participant register");
 		
@@ -33,7 +33,7 @@ public class ParticipantController {
 		System.out.println("register Participant.getParticipantNo = "
 				+ participant.getParticipantNo());
 		
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<>(participant, HttpStatus.OK);
 	}
 	
 	/*

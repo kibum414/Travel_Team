@@ -4,15 +4,6 @@ import { Link } from 'react-router-dom'
 
 const ParticipantForm = () => {
 
-  const [participant, setParticipant] = useState({
-    participantName: "",
-    gender: "",
-    birthday: "",
-    phone: "",
-    email: "",
-  })
-
-  const { participantName, gender, birthday, phone, email } = participant
 
   const participantRegister = (e) => {
     e.preventDefault()
@@ -20,11 +11,12 @@ const ParticipantForm = () => {
     alert('클릭 1')
 
     axios.post(`http://localhost:8080/participants`, {
-      participantName,
-      gender,
-      birthday,
-      phone,
-      email
+      name: "11",
+      gender: "22",
+      birthday: "33",
+      phoneNumber: "55",
+      email: "77",
+      regdate: Date()
     })
     .then(res => {
       alert(`res : ${res.data}`)
@@ -35,12 +27,12 @@ const ParticipantForm = () => {
   }
 
   return (
-    <form>
+    <form onSubmit={participantRegister}>
       <h3>캠페인 참가자 등록</h3>
       
       <div className="content">
         <label for="participantName">이름</label>
-        <input type="text" placeholder="이름을 입력하세요." name="participantName" required />
+        <input type="text" placeholder="이름을 입력하세요." name="name" value="" required />
         
         <label for="gender">성별</label>
         <select name="gender" required>
@@ -63,7 +55,7 @@ const ParticipantForm = () => {
 
       <div>
         <Link to="/Participant">취소</Link>
-        <button onClick={participantRegister}>등록</button>
+        <button type="submit">등록</button>
       </div>
     </form>
   )
