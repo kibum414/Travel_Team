@@ -1,64 +1,43 @@
 package com.example.demo.pts.service;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.cmm.service.AbstractService;
 import com.example.demo.pts.domain.Participant;
-import com.example.demo.pts.domain.ParticipantDto;
 import com.example.demo.pts.repository.ParticipantRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class ParticipantServiceImpl extends AbstractService<Participant> implements ParticipantService {
+public class ParticipantServiceImpl /*extends AbstractService<Participant>*/ implements ParticipantService {
 
 	private final ParticipantRepository repo;
-	
+
 	@Override
-	public long count() {
-		// TODO Auto-generated method stub
-		return repo.count();
+	public void register(Participant participant) throws Exception {
+		repo.save(participant);
 	}
 
 	@Override
-	public boolean existsById(long id) {
-		// TODO Auto-generated method stub
-		return repo.existsById(null);
+	public void modify(Participant participant) throws Exception {
+		repo.save(participant);
 	}
 
 	@Override
-	public List<Participant> findAll() {
-		// TODO Auto-generated method stub
+	public void delete(Long participantNo) throws Exception {
+		repo.deleteById(participantNo);
+	}
+
+	@Override
+	public Participant detail(Long participantNo) throws Exception {
+		return repo.getOne(participantNo);
+	}
+
+	@Override
+	public List<Participant> list() throws Exception {
 		return repo.findAll();
 	}
-
-	@Override
-	public Optional<Participant> findOne(Example<Participant> example) {
-		// TODO Auto-generated method stub
-		return repo.findOne(example);
-	}
-
-	@Override
-	public void deleteById(long id) {
-		// TODO Auto-generated method stub
-		repo.deleteById(id);
-	}
-	
-	@Override
-	public Participant save(Participant entity) {
-		return repo.save(entity);
-	}
-
-	@Override
-	public Participant getOne(long id) {
-		// TODO Auto-generated method stub
-		return repo.getOne(id);
-	}
-
 
 }

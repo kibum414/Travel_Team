@@ -33,7 +33,7 @@ public class ParticipantController {
 			@Validated @RequestBody Participant participant) throws Exception {
 		System.out.println("Participant register");
 		
-		service.save(participant);
+		service.register(participant);
 		
 		System.out.println("register participant.getParticipantNo = "
 				+ participant.getParticipantNo());
@@ -41,6 +41,7 @@ public class ParticipantController {
 		return new ResponseEntity<>(participant, HttpStatus.OK);
 	}
 	
+	/*
 	@PutMapping("/{participantNo}")
 	public ResponseEntity<Participant> modify(
 			@PathVariable("participantNo") Long participantNo, 
@@ -48,7 +49,7 @@ public class ParticipantController {
 		System.out.println("Participant modify");
 		
 		participant.setParticipantNo(participantNo);
-		service.save(participant);
+		service.modify(participant);
 		
 		return new ResponseEntity<>(participant, HttpStatus.OK);
 	}
@@ -58,7 +59,7 @@ public class ParticipantController {
 			@PathVariable("participantNo") Long participantNo) throws Exception {
 		System.out.println("Participant delete");
 		
-		service.deleteById(participantNo);
+		service.delete(participantNo);
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
@@ -68,7 +69,7 @@ public class ParticipantController {
 			@PathVariable("participantNo") Long participantNo) throws Exception {
 		System.out.println("Participant read");
 		
-		Participant participant = service.getOne(participantNo);
+		Participant participant = service.detail(participantNo);
 		
 		return new ResponseEntity<>(participant, HttpStatus.OK);
 	}
@@ -77,6 +78,7 @@ public class ParticipantController {
 	public ResponseEntity<List<Participant>> list() throws Exception {
 		System.out.println("Participant list");
 		
-		return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
+		return new ResponseEntity<>(service.list(), HttpStatus.OK);
 	}
+	*/
 }
