@@ -1,9 +1,18 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import './Participant.css'
 
 const ParticipantForm = () => {
 
+  const [inputs, setInputs] = useState({
+    name: "",
+    gender: "",
+    birthday: "",
+    phoneNumber: "",
+    email: "",
+    regdate: ""
+  })
 
   const participantRegister = (e) => {
     e.preventDefault()
@@ -19,7 +28,7 @@ const ParticipantForm = () => {
       regdate: Date()
     })
     .then(res => {
-      alert(`res : ${res.data}`)
+      alert(`res : ${JSON.stringify(res.data)}`)
     })
     .catch(err => {
       alert(`err : ${err}`)
@@ -32,10 +41,11 @@ const ParticipantForm = () => {
       
       <div className="content">
         <label for="participantName">이름</label>
-        <input type="text" placeholder="이름을 입력하세요." name="name" value="" required />
+        <input type="text" placeholder="이름을 입력하세요." name="name" required />
         
         <label for="gender">성별</label>
         <select name="gender" required>
+          <option value="">성별</option>
           <option value="man">남자</option>
           <option value="woman">여자</option>
         </select>
