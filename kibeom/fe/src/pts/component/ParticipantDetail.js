@@ -19,7 +19,11 @@ const ParticipantDetail = () => {
 
   return (
     <>
-      
+      <table>
+        <thead>
+
+        </thead>
+      </table>
     </>  
   )
 }
