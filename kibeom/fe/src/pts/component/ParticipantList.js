@@ -8,7 +8,7 @@ const ParticipantList = () => {
   const [list, setList] = useState([])
 
   const getList = () => {
-    axios.get(`http://localhost:8080/participants/list`)
+    axios.get(`http://localhost:8080/participants`)
       .then(res => {
         console.log(res)
         setList(res.data)
@@ -30,7 +30,7 @@ const ParticipantList = () => {
         <thead>
           <tr>
             <th>번호</th>
-            <th>이름</th>
+            <th colSpan="10">이름</th>
             <th>신청일</th>
           </tr>
         </thead>
@@ -38,11 +38,14 @@ const ParticipantList = () => {
           {
             list.map(participant =>
               <tr>
-                <Link to={`/participants/list/${participant.participantNo}`}>
-                  <td key={participant.participantNo}>{participant.participantNo}</td>
-                  <td>{participant.name}</td>
+                <td key={participant.participantNo}>{participant.participantNo}</td>
+                
+                <td colSpan="10">
+                  <Link to={`/participants/list/${participant.participantNo}`}>
+                    {participant.name}
+                  </Link>
+                </td>
                   <td>{participant.regdate}</td>
-                </Link>
               </tr>
             )
           }

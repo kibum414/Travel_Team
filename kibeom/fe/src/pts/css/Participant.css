@@ -53,10 +53,10 @@ button:hover {
 
 /* Float cancel and signup buttons and add an equal width */
 .cancelbtn,
-.signupbtn,
+.participatebtn,
 .editbtn {
   float: left;
-  width: 50%;
+  width: 20%;
 }
 
 /* Add padding to container elements */

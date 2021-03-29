@@ -67,8 +67,10 @@ const ParticipantForm = () => {
       </div>
 
       <div>
-        <Link to="/participants/list"><button>취소</button></Link>
-        <button type="submit">등록</button>
+        <Link to="/participants/list">
+          <button className="cancelbtn">취소</button>
+        </Link>
+        <button type="submit" className="participatebtn">등록</button>
       </div>
     </form>
   )
